@@ -57,8 +57,7 @@ public class MainClient {
 	
 	public static void main(String[] args) {
 		// start the menu to check which user 
-		
-		System.out.println("menu();."+ menu());
+		menu();
 		
 		
 	}

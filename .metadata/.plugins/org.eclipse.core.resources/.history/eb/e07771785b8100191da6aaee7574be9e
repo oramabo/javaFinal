@@ -42,6 +42,8 @@ public class MainClient {
 				client.sendMsg(login());
 				System.out.println("You've chosen building managment status !#1");
 				return client.listner.modifiedSentence;
+            	
+            	break;
 
             case 2:
                 System.out.println("You've chosen item #2");
@@ -57,8 +59,7 @@ public class MainClient {
 	
 	public static void main(String[] args) {
 		// start the menu to check which user 
-		
-		System.out.println("menu();."+ menu());
+		menu();
 		
 		
 	}

@@ -5,12 +5,12 @@ import java.util.HashMap;
 
 class TCPClient { // Receive thread
 	 public Socket clientSocket;
-	 public TCPClient_listen listner;
+	 String modifiedSentence;
      TCPClient() 
     {   
         try {
-			clientSocket = new Socket("192.168.1.107", 10001);
-			listner = new TCPClient_listen(clientSocket);
+			Socket clientSocket = new Socket("192.168.1.107", 10001);
+			TCPClient_listen listner = new TCPClient_listen(clientSocket);
 			listner.start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

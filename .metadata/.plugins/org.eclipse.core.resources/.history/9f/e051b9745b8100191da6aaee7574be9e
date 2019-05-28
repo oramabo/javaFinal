@@ -27,7 +27,7 @@ public class MainClient {
 		return dataMap;
 	}
 	
-	public static String menu() {
+	public static void menu() {
 		Scanner in = new Scanner(System.in);
 		// print menu
         System.out.println( "1 ) Building Managment Press 1");
@@ -40,8 +40,9 @@ public class MainClient {
         switch (userStatus) {
 			case 1:
 				client.sendMsg(login());
-				System.out.println("You've chosen building managment status !#1");
-				return client.listner.modifiedSentence;
+				
+            	System.out.println("You've chosen building managment status !#1");
+            	break;
 
             case 2:
                 System.out.println("You've chosen item #2");
@@ -50,15 +51,14 @@ public class MainClient {
                 System.out.println("Invalid choice.");
         }		
         System.out.println("Bye-bye!");
-    	return"";
+
     }
 	
 	
 	
 	public static void main(String[] args) {
 		// start the menu to check which user 
-		
-		System.out.println("menu();."+ menu());
+		menu();
 		
 		
 	}

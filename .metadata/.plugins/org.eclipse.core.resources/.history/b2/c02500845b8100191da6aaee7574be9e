@@ -11,9 +11,6 @@ public class TCPClient_listen  extends Thread{
 	TCPClient_listen(Socket clientSocket ){
 		this.clientSocket = clientSocket; 
 	}
-	public String getResponse() {
-		return modifiedSentence;
-	}
 	  public void run() {
 	    	 BufferedReader inFromServer;
 	    	 try {
