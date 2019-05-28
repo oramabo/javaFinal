@@ -14,13 +14,15 @@ import java.util.Scanner;
 public class TCPClient_send extends Thread {// the client sending thread - send to server
 	
 	private Socket clientSocket;
+	private Map<String, String> dataMap;
 	
-	TCPClient_send(Socket clientSocket)
+	TCPClient_send(Socket clientSocket, HashMap<String, String> dataMap)
 	{
 		this.clientSocket = clientSocket ; 
+		this.dataMap = dataMap;
 	}
 	
-	public void send(HashMap<String, String> dataMap)
+	public void send()
 	{
         String sentence; 
         String modifiedSentence; 
