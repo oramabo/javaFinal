@@ -42,7 +42,7 @@ class TCPServer {
 						String password = dataMap.get("password");
 						System.out.println(username);
 						System.out.println(password);
-						sendMsg(incoming, "https://prod.liveshare.vsengsaas.visualstudio.com/join?595C67C7C64C74E4406EBA1ADE155E12CBC5");	
+						sendMsg(incoming, "sucsess");	
 						break;
 		
 					default:

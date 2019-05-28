@@ -1,0 +1,42 @@
+package classes;
+
+import java.awt.Menu;
+import java.io.Console;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class MainClient {
+	TCPClient client = new TCPClient();
+	TCPClient client = new TCPClient();
+	
+	public static HashMap<String, String>  login() {
+		HashMap<String, String> dataMap;
+	    Console console = System.console();
+	    Scanner userNameScanner = new Scanner(System.in);
+	    System.out.println(" Enter Username : " );
+	    String userNameString = userNameScanner.nextLine();
+	    System.out.println("Username : " + userNameString );
+	    System.out.println(" Enter pwd : " );
+	    String pwdString = userNameScanner.nextLine();
+	    userNameScanner.close();
+	    System.out.println("pwd : " + pwdString );
+	    dataMap = new HashMap<String, String>();
+		dataMap.put("func", "login");
+		dataMap.put("username", userNameString);
+		dataMap.put("password", pwdString);
+		return dataMap;
+	}
+	
+	public static void menu() {
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// start the menu to check which user 
+		menu();
+		// login
+		
+	}
+}

@@ -1,0 +1,36 @@
+import java.io.*; 
+import java.net.*;
+
+class TCPClient { // Receive thread
+	 public Socket clientSocket;
+     TCPClient()
+    { 
+        String modifiedSentence;  
+        Socket clientSocket = new Socket("192.168.1.107", 10001); //call the server
+       //new SwitchOperatedTextMenu();
+        //TCPClient_send s1 = new TCPClient_send(clientSocket, login.getHashMap());
+        
+       // TCPClient_send s1 = new TCPClient_send(clientSocket , clientSocket.toString());
+    s1.start();// split the client - for send and receive thread
+
+BufferedReader inFromServer = new BufferedReader(newInputStreamReader(clientSocket.getInputStream())); 
+		
+		System.out.println(inFromServer.readLine());
+
+		while(true)
+		{
+
+			modifiedSentence = inFromServer.readLine(); // getting from server
+			
+			if(modifiedSentence != null)
+			{
+				System.out.println("FROM : " + modifiedSentence);// printing in the console
+			
+			
+			}
+                
+		}
+        
+    } 
+} 
+

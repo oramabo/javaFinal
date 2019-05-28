@@ -1,0 +1,16 @@
+package classes;
+
+public class MainClient {
+	
+	void login() {
+		
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+	}
+}
