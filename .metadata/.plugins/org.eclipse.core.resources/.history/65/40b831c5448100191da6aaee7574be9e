@@ -1,0 +1,106 @@
+package classes;
+import java.io.*; 
+import java.net.*; 
+import java.util.ArrayList;
+import java.util.Map;
+
+class TCPServer { 
+
+	
+	 static void sendMsg(Socket incoming , String  msg) {
+		String clientSentence; 
+		System.out.println("send msg to:" + incoming);
+		try
+		{
+	       DataOutputStream  outToClient = 
+	         new DataOutputStream(incoming.getOutputStream());
+			clientSentence=msg;
+			clientSentence += '\n'; //MUST BE \N !!!!!!!!!!!!
+			outToClient.writeBytes(clientSentence );// sending to the client clientSentence string	   
+	     
+       
+		}
+		catch(IOException e)
+		{
+			
+		}
+	}
+	
+	static void reciveMsg(Socket incoming ) {
+		String clientSentence;
+		try
+		{
+			InputStreamReader isr = new InputStreamReader(incoming.getInputStream());
+			InputStream is = incoming.getInputStream();
+			BufferedReader inFromClient = new BufferedReader(isr);       
+			
+			
+			while(true) {
+			   clientSentence = inFromClient.readLine(); // Receive from client  
+			   ObjectInputStream data= new ObjectInputStream(is);
+			   Map<String, String> dataMap = (Map) data.readObject();
+			   
+			   String func = dataMap.get("func");
+			   switch (func) {
+					case "login":
+						sendMsg(incoming, "sucsess");	
+						break;
+		
+					default:
+						sendMsg(incoming, "Function not found....");	
+						break;
+				}
+			   
+			   
+			   
+			   
+			   System.out.println(incoming + " say" + clientSentence);
+			   
+			   
+			   
+			   clientSentence="";
+			 	
+			}
+			
+		}
+		catch(IOException e)
+		{
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	
+  public static void main(String argv[]) throws Exception 
+    { 
+	 
+	  ServerSocket s = null;
+	 
+		try {
+		    s = new ServerSocket(10001);
+		
+		} catch(IOException e) {
+		    System.out.println(e);
+		    System.exit(1);
+		}
+
+		while (true) {
+		    Socket incoming = null;
+		    
+		    try {
+		    	incoming = s.accept();
+			
+		    } catch(IOException e) {
+		    	System.out.println(e);
+			continue;
+		    }
+		    System.out.println(incoming);
+		    reciveMsg(incoming);    		    
+		    
+		}
+    } 
+} 

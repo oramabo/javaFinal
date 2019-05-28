@@ -1,0 +1,30 @@
+package classes;
+import java.io.*;
+import java.net.*;
+
+public class TCPServer {
+	 public static void main(String argv[]) throws Exception {
+		  String clientSentence;
+		  String capitalizedSentence;
+		  
+		  ServerSocket welcomeSocket = new ServerSocket(4001);
+		  Runtime.getRuntime().addShutdownHook(new Thread(){public void run(){
+			    try {
+			    	welcomeSocket.close();
+			        System.out.println("The server is shut down!");
+			    } catch (IOException e) { /* failed */ }
+			}});
+		  System.out.println("Server is listning");
+		  while (true) {
+		   Socket connectionSocket = welcomeSocket.accept();
+		   DataInputStream inFromClient = new DataInputStream(connectionSocket.getInputStream());
+           OutputStreamWriter outToClient = new OutputStreamWriter(connectionSocket.getOutputStream());
+		   //clientSentence = inFromClient.readLine();
+		   System.out.println("Received: " + inFromClient.readUTF());
+		   //capitalizedSentence = clientSentence.toUpperCase() + 'n';
+		   outToClient.writeUTF("server says: " + inFromClient.readUTF());
+		   outToClient.flush();
+		  }
+		 }
+
+}

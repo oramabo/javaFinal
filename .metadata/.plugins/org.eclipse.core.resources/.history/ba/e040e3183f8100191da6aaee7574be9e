@@ -1,0 +1,87 @@
+package classes;
+import java.io.*; 
+import java.net.*; 
+import java.util.ArrayList;
+
+class TCPServer { 
+
+	
+	 static void sendMsg(Socket incoming , String  msg) {
+		String clientSentence; 
+		System.out.println("send msg to:" + incoming);
+		try
+		{
+	       DataOutputStream  outToClient = 
+	         new DataOutputStream(incoming.getOutputStream());
+		     while(true)
+		     {
+				clientSentence=msg;
+				clientSentence += '\n'; //MUST BE \N !!!!!!!!!!!!
+				outToClient.writeBytes(clientSentence );// sending to the client clientSentence string	   
+				break;
+		     }
+       
+		}
+		catch(IOException e)
+		{
+			
+		}
+	}
+	
+	static void reciveMsg(Socket incoming ) {
+		String clientSentence;
+		try
+		{
+		   BufferedReader inFromClient = new BufferedReader(new InputStreamReader(incoming.getInputStream()));       
+			while(true) {
+			   clientSentence = inFromClient.readLine(); // Receive from client    
+			   if(clientSentence.toLowerCase().equals("bye"))// if the client send bye 
+			   {										// we close the connection
+			   System.out.println(incoming + " is now disconnect");
+				   incoming.close();
+				   break;
+			   }
+			   System.out.println(incoming + " say" + clientSentence);
+			   clientSentence="";
+			 	sendMsg(incoming, "server msg");	
+			}
+			
+		}
+		catch(IOException e)
+		{
+			
+		}
+
+	}
+	
+	
+	
+  public static void main(String argv[]) throws Exception 
+    { 
+	 
+	  ServerSocket s = null;
+	 
+		try {
+		    s = new ServerSocket(10001);
+		
+		} catch(IOException e) {
+		    System.out.println(e);
+		    System.exit(1);
+		}
+
+		while (true) {
+		    Socket incoming = null;
+		    
+		    try {
+		    	incoming = s.accept();
+			
+		    } catch(IOException e) {
+		    	System.out.println(e);
+			continue;
+		    }
+		    System.out.println(incoming);
+		    reciveMsg(incoming);    		    
+		    
+		}
+    } 
+} 
