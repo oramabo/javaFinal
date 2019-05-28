@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainClient {
-	 static TCPClient client = new TCPClient();
+	TCPClient client = new TCPClient();
 	
 	
 	public static HashMap<String, String>  login() {
@@ -27,39 +27,59 @@ public class MainClient {
 		return dataMap;
 	}
 	
-	public static String menu() {
+	public static void menu() {
 		Scanner in = new Scanner(System.in);
-		// print menu
-        System.out.println( "1 ) Building Managment Press 1");
-        System.out.println("2 ) Building Resdient Press 2");
-        System.out.println("0. Quit");
-        // handle user commands
-        int userStatus;
-        System.out.print("Choose Your User Status: ");
-        userStatus = in.nextInt();
-        switch (userStatus) {
+
+            // print menu
+
+
+            System.out.println( "1 ) Building Managment Press 1");
+            System.out.println("2 ) Building Resdient Press 2");
+            System.out.println("0. Quit");
+
+            // handle user commands
+
+            int userStatus;
+            System.out.print("Choose Your User Status: ");
+
+            userStatus = in.nextInt();
+
+            switch (userStatus) {
+
 			case 1:
-				client.sendMsg(login());
-				System.out.println("You've chosen building managment status !#1");
-				return client.listner.modifiedSentence;
+				login();
+            	System.out.println("You've chosen building managment status !#1");
+                        // do something..
+            	break;
 
             case 2:
+
                 System.out.println("You've chosen item #2");
+
+                // do something...
+
                 break;
+
+
             default:
+
                 System.out.println("Invalid choice.");
-        }		
-        System.out.println("Bye-bye!");
-    	return"";
-    }
+
+		}		
+
+
+            System.out.println("Bye-bye!");
+
+        }
+
+	
 	
 	
 	
 	public static void main(String[] args) {
 		// start the menu to check which user 
-		
-		System.out.println("menu();."+ menu());
-		
+		menu();
+		// login
 		
 	}
 }
