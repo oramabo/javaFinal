@@ -9,7 +9,7 @@ class TCPClient { // Receive thread
      TCPClient() 
     {   
         try {
-			Socket clientSocket = new Socket("192.168.1.107", 10001);
+			clientSocket = new Socket("192.168.1.107", 10001);
 			TCPClient_listen listner = new TCPClient_listen(clientSocket);
 			listner.start();
 		} catch (IOException e) {
@@ -22,7 +22,9 @@ class TCPClient { // Receive thread
      
      public String sendMsg(HashMap<String, String>data) {
         TCPClient_send s1 = new TCPClient_send(clientSocket);
-        s1.send(data);
+        s1.setData(data);
+        s1.start();
+        
 		return "";
      }
    
