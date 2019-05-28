@@ -11,7 +11,7 @@ public class TCPClient_listen  extends Thread{
 	TCPClient_listen(Socket clientSocket ){
 		this.clientSocket = clientSocket; 
 	}
-	  public void run() {
+	  public String listen() {
 	    	 BufferedReader inFromServer;
 	    	 try {
 				inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -28,6 +28,6 @@ public class TCPClient_listen  extends Thread{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			return ""; 
 	    } 
 }
