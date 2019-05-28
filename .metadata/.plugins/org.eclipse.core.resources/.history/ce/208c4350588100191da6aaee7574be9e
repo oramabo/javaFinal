@@ -1,0 +1,11 @@
+package classes;
+
+import java.net.Socket;
+
+public class TCPClient_listen  extends Thread{
+	private Socket clientSocket;
+
+	TCPClient_listen(Socket clientSocket ){
+		this.clientSocket = clientSocket ; 
+	}
+}

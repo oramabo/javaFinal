@@ -10,8 +10,7 @@ class TCPClient { // Receive thread
     {   
         try {
 			Socket clientSocket = new Socket("192.168.1.107", 10001);
-			TCPClient_listen listner = new TCPClient_listen(clientSocket);
-			listner.listen();
+			listen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,6 +26,4 @@ class TCPClient { // Receive thread
      }
    
 } 
-
-
 
