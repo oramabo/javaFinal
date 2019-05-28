@@ -22,7 +22,9 @@ class TCPClient { // Receive thread
      
      public String sendMsg(HashMap<String, String>data) {
         TCPClient_send s1 = new TCPClient_send(clientSocket);
+        s1.setData(data);
         s1.start();
+        
 		return "";
      }
    
