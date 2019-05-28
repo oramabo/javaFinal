@@ -29,7 +29,7 @@ public class TCPClient_send extends Thread {// the client sending thread - send 
         String modifiedSentence; 
         
 			try {
-				OutputStream oStream = clientSocket.getOutputStream();
+				OutputStream oStream = this.clientSocket.getOutputStream();
 				ObjectOutputStream objectOutputStream = new ObjectOutputStream(oStream);
 				objectOutputStream.writeObject(dataMap);
 			} catch (IOException e) {
