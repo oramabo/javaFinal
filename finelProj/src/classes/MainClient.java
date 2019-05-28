@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainClient {
-	 static TCPClient client = new TCPClient();
+	 static TCPClient client ;
+	 
 	
 	
 	public static HashMap<String, String>  login() {
@@ -58,6 +59,7 @@ public class MainClient {
 	
 	public static void main(String[] args) {
 		// start the menu to check which user 
+		client = new TCPClient();
 		menu();
 		
 		

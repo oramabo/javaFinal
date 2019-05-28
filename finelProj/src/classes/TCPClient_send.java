@@ -14,21 +14,19 @@ import java.util.Scanner;
 public class TCPClient_send extends Thread {// the client sending thread - send to server
 	
 	private Socket clientSocket;
-	private Map<String, String> dataMap;
 	
-	TCPClient_send(Socket clientSocket, HashMap<String, String> dataMap)
+	TCPClient_send(Socket clientSocket)
 	{
 		this.clientSocket = clientSocket ; 
-		this.dataMap = dataMap;
 	}
 	
-	public void run()
+	public void send(HashMap<String, String> dataMap)
 	{
         String sentence; 
         String modifiedSentence; 
         
 			try {
-				OutputStream oStream = clientSocket.getOutputStream();
+				OutputStream oStream = this.clientSocket.getOutputStream();
 				ObjectOutputStream objectOutputStream = new ObjectOutputStream(oStream);
 				objectOutputStream.writeObject(dataMap);
 			} catch (IOException e) {
